@@ -1,21 +1,18 @@
-/* Selector universal: quita los espacios predeterminados y facilita calcular el tamaño de todos los elementos. */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-/* <body>: usa Roboto, fuente cargada desde Google Fonts en el HTML para el texto de toda la página. */
+
 body {
     font-family: 'Roboto', sans-serif;
 }
 
-/* Todos los títulos del HTML (h1 a h6): unifica el color y aplica un grosor de letra ligero. */
 h1, h2, h3, h4, h5, h6 {
     color: #1d273b;
     font-weight: 300;
 }
 
-/* class="contenedor": centra y limita el ancho de las secciones que usan esta clase en el HTML. */
 .contenedor {
     width: 90%;
     max-width: 1000px;
@@ -23,8 +20,6 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
-/* class="contenedor1": igual que .contenedor, con espacio vertical adicional.
-   Se usa en la sección de servicios y en la sección de habilidades. */
 .contenedor1 {
     width: 90%;
     max-width: 1000px;
@@ -33,14 +28,13 @@ h1, h2, h3, h4, h5, h6 {
     padding: 60px 0;
 }
 
-/* <header>::before: agrega espacio antes del contenido para compensar la barra de navegación fija. */
+/* Header */
 header::before {
     content: "";
     display: block;
     margin-bottom: 80px;
 }
 
-/* <nav>: crea la barra superior fija con fondo, sombra y transición. */
 nav {
     width: 100%;
     height: 80px;
@@ -53,7 +47,6 @@ nav {
     transition: ease-in-out 0.5s;
 }
 
-/* class="nav" dentro de <nav>: distribuye el logo, los enlaces y el menú en una fila. */
 .nav {
     display: flex;
     justify-content: space-between;
@@ -63,33 +56,27 @@ nav {
     padding: 0 40px;
 }
 
-/* class="logo" dentro de .nav: establece el alto del contenedor del logo. */
 .nav .logo {
-    height: 100px;
+    height: 80px;
 }
 
-/* Imagen dentro de .logo: ocupa el alto del contenedor y se alinea arriba. */
 .nav .logo img {
     height: 100%;
     vertical-align: top;
 }
 
-/* class="enlaces-header": ajusta el grosor de los enlaces de navegación y su transición. */
 .enlaces-header {
     font-weight: 300;
     transition: ease-in-out 0.5s;
 }
 
-/* Enlaces <a> dentro de .nav .enlaces-header: define su color y elimina el subrayado. */
 .nav .enlaces-header a {
     color: #5D6678;
     text-decoration: none;
     margin-left: 20px;
 }
 
-/* Menú hamburguesa: prepara su tamaño, centrado y cursor.
-   El HTML usa class="hamburger", pero esta regla busca "hamburguer", así que no coincide. */
-.hamburguer {
+.hamburger {
     width: 80px;
     height: 80px;
     display: none;
@@ -99,14 +86,11 @@ nav {
     transition: color 0.5s ease-in;
 }
 
-/* Icono <i> del menú hamburguesa: establece tamaño y centrado vertical.
-   La clase del selector no coincide con la clase del HTML, como se indica arriba. */
-.hamburguer > i {
+.hamburger > i {
     font-size: 25px;
     line-height: 80px;
 }
 
-/* class="contenido-header": organiza el texto y la imagen de la cabecera en una fila. */
 .contenido-header {
     width: 100%;
     height: 600px;
@@ -115,13 +99,11 @@ nav {
     align-items: center;
 }
 
-/* Imagen dentro de .contenido-header: define su ancho y aplica una animación de entrada. */
 .contenido-header > img {
     width: 550px;
     animation: ease-in animat 1s;
 }
 
-/* Animación de la imagen de cabecera: aparece desde escala cero hasta su tamaño normal. */
 @keyframes animat {
     0% {
         transform: scale(0);
@@ -131,12 +113,10 @@ nav {
     }
 }
 
-/* class="textos-header": separa el bloque de texto de la imagen de cabecera. */
 .textos-header {
     margin: 0 0 0 30px;
 }
 
-/* parrafos de .contenido-header: establece grosor, separación superior y color. */
 .contenido-header p {
     font-weight: 100;
     margin-top: 14px;
@@ -415,4 +395,94 @@ footer {
     color: #FFF;
     background-color: #1FDE82;
     border-color: #1FDE82;
+}
+
+@media screen and (max-width: 800px) {
+    .nav {
+        padding: 0 20px;
+    }
+
+    .hamburger {
+        display: flex;
+        width: 60px;
+        height: 80px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hamburger > i {
+        line-height: 1;
+        display: block;
+    }
+
+    .enlaces-header {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+        transition: height 0.35s ease;
+    }
+
+    .enlaces-header.menudos {
+        height: calc(100vh - 80px);
+    }
+
+    .nav .enlaces-header a {
+        margin: 0;
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .contenido-header,
+    .pregunta,
+    .conten-resultados,
+    .serviciosd {
+        height: auto;
+        flex-direction: column;
+        padding: 60px 0;
+    }
+
+    .contenido-header > img,
+    .pregunta > img,
+    .serviciosd > img {
+        width: 90%;
+        height: auto;
+    }
+
+    .contenedor-servicio {
+        margin: 40px 0;
+    }
+
+    .servicio {
+        width: 45%;
+    }
+
+    .numbers,
+    .results-text {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contenedor,
+    .contenedor1 {
+        width: 88%;
+    }
+
+    .servicio,
+    .numbers,
+    .numbers .number,
+    .results-text,
+    .partFooter {
+        width: 100%;
+    }
 }
